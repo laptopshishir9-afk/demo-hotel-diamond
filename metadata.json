@@ -1,0 +1,6 @@
+{
+  "name": "Hotel Diamond - Sandhikharka, Nepal",
+  "description": "Premium mobile-first hotel website demo for Hotel Diamond, Sandhikharka, Nepal, featuring authentic photography, room showcases, event hall inquiries, and cinematic presentation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

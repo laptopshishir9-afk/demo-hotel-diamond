@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  
+  /* Champagne Gold Accents */
+  --color-champagne-300: #e6cca0;
+  --color-champagne-400: #d8b880;
+  --color-champagne-500: #c5a880;
+  --color-champagne-600: #a8885c;
+
+  /* Diamond Metallic Red */
+  --color-ruby-500: #ef2e36;
+  --color-ruby-600: #d61f26;
+  --color-ruby-700: #b3141a;
+
+  /* Luxury Navy Blue Theme Palette */
+  --color-navy-950: #070e19;
+  --color-navy-900: #0b1a2f;
+  --color-navy-850: #0f223f;
+  --color-navy-800: #142c50;
+  --color-navy-700: #1b3864;
+  --color-navy-600: #264d84;
+  --color-navy-500: #3867a8;
+
+  /* Deep Charcoal & Night */
+  --color-night-950: #070a10;
+  --color-night-900: #0c121c;
+  --color-night-850: #121927;
+  --color-night-800: #182234;
+  --color-night-700: #24324a;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: #08101d;
+    color: #e5e9f0;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: var(--font-serif);
+    letter-spacing: -0.015em;
+  }
+}
+
+/* Diamond Logo Light Sheen Sweep Animation */
+@keyframes diamondLightSweep {
+  0% {
+    transform: translateX(-160%) skewX(-25deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.75;
+  }
+  35% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateX(260%) skewX(-25deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(260%) skewX(-25deg);
+    opacity: 0;
+  }
+}
+
+/* Diamond Sparkle Twinkle Animation */
+@keyframes diamondSparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.3) rotate(0deg);
+  }
+  15% {
+    opacity: 1;
+    transform: scale(1.2) rotate(45deg);
+  }
+  30% {
+    opacity: 0.2;
+    transform: scale(0.6) rotate(90deg);
+  }
+  45% {
+    opacity: 0.9;
+    transform: scale(1.1) rotate(135deg);
+  }
+  60% {
+    opacity: 0;
+    transform: scale(0.2) rotate(180deg);
+  }
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #070e19;
+}
+::-webkit-scrollbar-thumb {
+  background: #1b3864;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c5a880;
+}
