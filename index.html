@@ -12,9 +12,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      // GitHub Pages SPA & path resolution: ensure trailing slash so relative assets always load reliably
+      (function() {
+        var path = window.location.pathname;
+        if (path.length > 1 && !path.endsWith('/') && !path.split('/').pop().includes('.')) {
+          window.location.replace(path + '/' + window.location.search + window.location.hash);
+        }
+      })();
+    </script>
   </head>
-  <body class="bg-[#0e0e11] text-[#e8e6e3] antialiased selection:bg-[#c5a880]/30 selection:text-[#fff]">
-    <div id="root"></div>
+  <body class="bg-[#08101d] text-[#e5e9f0] antialiased selection:bg-[#c5a880]/30 selection:text-white">
+    <div id="root">
+      <!-- Branded fallback while React mounts or if network temporarily delays JS -->
+      <div style="min-height: 100vh; background-color: #08101d; color: #e5e9f0; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: system-ui, -apple-system, sans-serif; text-align: center; padding: 24px;">
+        <div style="max-width: 440px; width: 100%; padding: 36px 28px; border-radius: 16px; background-color: #0c1a2f; border: 1px solid #1b3a66; box-shadow: 0 16px 48px rgba(3,10,24,0.85);">
+          <div style="width: 56px; height: 56px; margin: 0 auto 16px; border-radius: 50%; background-color: rgba(214,31,38,0.15); border: 1px solid rgba(214,31,38,0.35); display: flex; align-items: center; justify-content: center; font-size: 26px; color: #d61f26;">♦</div>
+          <h1 style="font-size: 24px; font-weight: 700; color: #ffffff; margin: 0 0 6px; letter-spacing: 0.02em;">HOTEL DIAMOND</h1>
+          <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.25em; color: #c5a880; margin: 0 0 16px; font-weight: 500;">Sandhikharka, Nepal</p>
+          <div style="width: 40px; height: 2px; background: #c5a880; margin: 0 auto 18px; opacity: 0.6;"></div>
+          <p style="font-size: 13px; color: #94a3b8; line-height: 1.6; margin: 0 0 20px;">Welcome to Hotel Diamond. Connecting your hospitality experience...</p>
+          <noscript>
+            <p style="font-size: 12px; color: #fca5a5; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); padding: 10px 14px; border-radius: 8px;">Please enable JavaScript in your browser to view the interactive website.</p>
+          </noscript>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

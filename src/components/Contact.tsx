@@ -4,6 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { useSiteData } from '../context/SiteDataContext';
 import { MapPin, Phone, Mail, Send, CheckCircle2, Clock, AlertCircle } from 'lucide-react';
 import { DiamondShineLogo } from './DiamondShineLogo';
+import { ScrollReveal } from './ScrollReveal';
 
 interface ContactProps {
   initialInquiryType?: 'Room Stay' | 'Event Hall / Gathering' | 'Dining & Meals' | 'General Question';
@@ -22,7 +23,7 @@ export const Contact: React.FC<ContactProps> = ({
     phone: '',
     email: '',
     inquiryType: initialInquiryType,
-    roomType: 'Comfortable Accommodation (diamond 222)',
+    roomType: 'Comfortable Guest Accommodation',
     checkInDate: '',
     checkOutDate: '',
     guestsCount: '1-2 Guests',
@@ -76,7 +77,7 @@ export const Contact: React.FC<ContactProps> = ({
       phone: '',
       email: '',
       inquiryType: initialInquiryType,
-      roomType: 'Comfortable Accommodation (diamond 222)',
+      roomType: 'Comfortable Guest Accommodation',
       checkInDate: '',
       checkOutDate: '',
       guestsCount: '1-2 Guests',
@@ -88,27 +89,30 @@ export const Contact: React.FC<ContactProps> = ({
     <section id="contact" className="py-20 lg:py-28 bg-[#081220] relative border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-2xl mx-auto text-center mb-14">
-          <span className="text-xs uppercase tracking-[0.25em] text-[#c5a880] font-medium">
-            {t.contact.kicker}
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight mt-2 text-balance">
-            {t.contact.title} <span className="italic font-normal text-[#c5a880]">{t.contact.titleHighlight}</span>
-          </h2>
-          <p className="mt-4 text-sm sm:text-base text-neutral-300 font-light leading-relaxed">
-            {t.contact.subTitle}
-          </p>
-        </div>
+        <ScrollReveal direction="up">
+          <div className="max-w-2xl mx-auto text-center mb-14">
+            <span className="text-xs uppercase tracking-[0.25em] text-[#c5a880] font-medium">
+              {t.contact.kicker}
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight mt-2 text-balance">
+              {t.contact.title} <span className="italic font-normal text-[#c5a880]">{t.contact.titleHighlight}</span>
+            </h2>
+            <p className="mt-4 text-sm sm:text-base text-neutral-300 font-light leading-relaxed">
+              {t.contact.subTitle}
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
           {/* Left Column: Authentic Hotel Details & Information */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
-            <div className="space-y-6">
-              {/* Hotel Branding Card with DiamondShineLogo */}
-              <div className="p-6 rounded-2xl bg-[#0c1a2f] border border-[#1b3a66] shadow-xl">
-                <div className="mb-3">
-                  <DiamondShineLogo size="md" />
-                </div>
+            <ScrollReveal direction="up" delay={50} className="space-y-8">
+              <div className="space-y-6">
+                {/* Hotel Branding Card with DiamondShineLogo */}
+                <div className="p-6 rounded-2xl bg-[#0c1a2f] border border-[#1b3a66] shadow-xl">
+                  <div className="mb-3">
+                    <DiamondShineLogo size="md" />
+                  </div>
                 <h3 className="text-lg font-serif font-semibold text-white mt-2">
                   {language === 'ne' ? siteData.hotelInfo.fullNameNepali : siteData.hotelInfo.fullName}
                 </h3>
@@ -176,11 +180,13 @@ export const Contact: React.FC<ContactProps> = ({
                 Inquiries connect you directly with the front desk for personalized room allocation.
               </p>
             </div>
+            </ScrollReveal>
           </div>
 
           {/* Right Column: Contact & Booking Inquiry Form */}
           <div className="lg:col-span-7">
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#0c1a2f] border border-[#1b3a66] shadow-2xl relative">
+            <ScrollReveal direction="up" delay={150}>
+              <div className="p-6 sm:p-8 rounded-2xl bg-[#0c1a2f] border border-[#1b3a66] shadow-2xl relative">
               {submitted ? (
                 /* Success Confirmation State */
                 <div className="py-10 px-4 text-center flex flex-col items-center">
@@ -382,6 +388,7 @@ export const Contact: React.FC<ContactProps> = ({
                 </form>
               )}
             </div>
+            </ScrollReveal>
           </div>
         </div>
       </div>

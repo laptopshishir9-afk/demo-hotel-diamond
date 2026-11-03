@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, MapPin, PhoneCall } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useSiteData } from '../context/SiteDataContext';
+import { ScrollReveal } from './ScrollReveal';
 
 interface HeroProps {
   onExploreRooms: () => void;
@@ -28,8 +29,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreRooms, onContactUs }) => {
 
       {/* Hero Content Container */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-        {/* Authentic Location Kicker */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0b1a2f]/80 backdrop-blur-md border border-[#1b3a66] text-xs text-[#c5a880] mb-6 shadow-lg">
+        <ScrollReveal direction="up" delay={50} className="flex flex-col items-center">
+          {/* Authentic Location Kicker */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0b1a2f]/80 backdrop-blur-md border border-[#1b3a66] text-xs text-[#c5a880] mb-6 shadow-lg">
           <MapPin className="w-3.5 h-3.5 text-[#d61f26]" />
           <span className="tracking-wide">
             {language === 'ne' ? siteData.hotelInfo.locationNepali : siteData.hotelInfo.locationFull}
@@ -79,12 +81,13 @@ export const Hero: React.FC<HeroProps> = ({ onExploreRooms, onContactUs }) => {
           </button>
         </div>
 
-        {/* Genuine Arrival Indicator */}
-        <div className="mt-12 sm:mt-16 text-center">
-          <p className="text-[11px] sm:text-xs text-neutral-400 tracking-wider uppercase">
-            {t.hero.welcomingText}
-          </p>
-        </div>
+          {/* Genuine Arrival Indicator */}
+          <div className="mt-12 sm:mt-16 text-center">
+            <p className="text-[11px] sm:text-xs text-neutral-400 tracking-wider uppercase">
+              {t.hero.welcomingText}
+            </p>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

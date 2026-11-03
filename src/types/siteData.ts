@@ -54,11 +54,23 @@ export interface HotelInfoData {
   locationNepali: string;
   logoSrc: string;
   heroImage: string;
+  heroTitle?: string;
+  heroDesc?: string;
   aboutImage: string;
-  interiorImage: string; // diamond 22
-  roomImage: string; // diamond 222
+  aboutTitle?: string;
+  aboutDesc?: string;
+  interiorImage: string;
+  interiorTitle?: string;
+  interiorDesc?: string;
+  roomImage: string;
+  roomTitle?: string;
+  roomDesc?: string;
   eventImage: string;
+  eventTitle?: string;
+  eventDesc?: string;
   receptionImage: string;
+  receptionTitle?: string;
+  receptionDesc?: string;
   phonePrimary: string;
   email: string;
   frontDeskHours: string;

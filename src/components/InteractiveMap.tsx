@@ -3,6 +3,7 @@ import { HOTEL_INFO, AttractionItem } from '../data/hotelData';
 import { useLanguage } from '../context/LanguageContext';
 import { useSiteData } from '../context/SiteDataContext';
 import { MapPin, Navigation, ExternalLink, Compass, Car, Check } from 'lucide-react';
+import { ScrollReveal } from './ScrollReveal';
 
 interface InteractiveMapProps {
   selectedAttractionId?: string | null;
@@ -50,20 +51,23 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ selectedAttracti
     <section id="map" className="py-20 lg:py-28 bg-[#070e1a] relative border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <span className="text-xs uppercase tracking-[0.25em] text-[#c5a880] font-medium">
-            {t.map.kicker}
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight mt-2 text-balance">
-            {t.map.title}
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-neutral-300 font-light leading-relaxed text-balance">
-            {t.map.subTitle}
-          </p>
-        </div>
+        <ScrollReveal direction="up">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <span className="text-xs uppercase tracking-[0.25em] text-[#c5a880] font-medium">
+              {t.map.kicker}
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight mt-2 text-balance">
+              {t.map.title}
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-neutral-300 font-light leading-relaxed text-balance">
+              {t.map.subTitle}
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Map Experience Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        <ScrollReveal direction="up" delay={100}>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
           {/* Left Column: Interactive Location List & Details (5 cols) */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
             <div className="space-y-3">
@@ -213,6 +217,7 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ selectedAttracti
             </div>
           </div>
         </div>
+      </ScrollReveal>
       </div>
     </section>
   );

@@ -44,7 +44,7 @@ function MainAppContent() {
         phone: '+977 9847000000',
         email: 'bishal.sharma@example.com',
         inquiryType: 'Room Stay',
-        roomType: 'Comfortable Accommodation (diamond 222)',
+        roomType: 'Comfortable Guest Accommodation',
         checkInDate: '2026-11-15',
         checkOutDate: '2026-11-17',
         guestsCount: '2 Guests',

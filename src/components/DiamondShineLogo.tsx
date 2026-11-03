@@ -33,7 +33,7 @@ export const DiamondShineLogo: React.FC<DiamondShineLogoProps> = ({
       {/* The authentic transparent Hotel Diamond logo */}
       <div className="relative">
         <img
-          src="/assets/aistudio/hotel_diamond_logo_transparent.png"
+          src="./assets/aistudio/hotel_diamond_logo_transparent.png"
           alt="Hotel Diamond"
           className={`${heightClasses} w-auto object-contain filter drop-shadow-[0_2px_12px_rgba(214,31,38,0.35)] transition-transform duration-300 group-hover:scale-[1.03]`}
         />

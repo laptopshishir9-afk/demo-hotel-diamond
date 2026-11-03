@@ -231,7 +231,7 @@ export const translations: Record<Language, Translations> = {
       inquiryButton: 'Contact for Room Inquiry',
       note: 'Direct inquiries receive fast confirmation and personal room preparation.',
       clickToEnlarge: 'Click to Enlarge ⤢',
-      verifiedBadge: 'Verified Hotel Diamond Guest Bedroom (diamond 222)',
+      verifiedBadge: 'Verified Hotel Diamond Guest Bedroom',
     },
     interior: {
       kicker: 'Hospitality Spaces',
@@ -404,7 +404,7 @@ export const translations: Record<Language, Translations> = {
       inquiryButton: 'कोठा सोधपुछका लागि सम्पर्क गर्नुहोस्',
       note: 'प्रत्यक्ष सोधपुछमा तुरुन्तै कोठा व्यवस्थापन गरिन्छ।',
       clickToEnlarge: 'ठूलो फोटो हेर्नुहोस् ⤢',
-      verifiedBadge: 'होटेल डायमण्ड वास्तविक पाहुना कोठा (diamond 222)',
+      verifiedBadge: 'होटेल डायमण्ड वास्तविक पाहुना कोठा',
     },
     interior: {
       kicker: 'आतिथ्य कक्ष',

@@ -157,6 +157,14 @@ const PhotoCard: React.FC<PhotoCardProps> = ({
           )}
         </div>
 
+        {/* Admin-only File Reference */}
+        <div className="mt-2 flex items-center justify-between text-[10px] text-neutral-400 font-mono bg-black/40 px-2 py-1 rounded border border-white/5 truncate">
+          <span className="truncate">Source: {currentImage ? (currentImage.split('/').pop()?.split('?')[0] || 'Image') : 'None'}</span>
+          {selectedFileName && (
+            <span className="text-amber-400 font-semibold shrink-0 ml-1">New: {selectedFileName}</span>
+          )}
+        </div>
+
         {/* Error Notification */}
         {errorMessage && (
           <div className="mt-2.5 p-2 rounded bg-rose-950/70 border border-rose-500/50 text-rose-200 text-[11px] flex items-center gap-1.5">
@@ -830,7 +838,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                       </h4>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                       {/* Photo 1: Hero Exterior */}
                       <PhotoCard
                         title="Main Exterior Facade"
@@ -844,12 +852,44 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                           }
                           return res;
                         }}
+                        detailsForm={
+                          <div className="space-y-2 text-xs">
+                            <div>
+                              <label className="text-neutral-400 block mb-1">Customer-Facing Title</label>
+                              <input
+                                type="text"
+                                value={localHotelInfo.heroTitle || 'Hotel Diamond Exterior Facade'}
+                                onChange={(e) => setLocalHotelInfo({ ...localHotelInfo, heroTitle: e.target.value })}
+                                className="w-full min-h-[36px] px-2.5 py-1 bg-black/50 border border-white/10 rounded text-white"
+                              />
+                            </div>
+                            <div>
+                              <label className="text-neutral-400 block mb-1">Public Caption / Description</label>
+                              <textarea
+                                rows={2}
+                                value={localHotelInfo.heroDesc || 'The distinctive exterior presence of Hotel Diamond welcoming visitors to Sandhikharka.'}
+                                onChange={(e) => setLocalHotelInfo({ ...localHotelInfo, heroDesc: e.target.value })}
+                                className="w-full px-2.5 py-1 bg-black/50 border border-white/10 rounded text-white text-[11px]"
+                              />
+                            </div>
+                            <button
+                              type="button"
+                              onClick={async () => {
+                                await updateHotelInfo({ heroTitle: localHotelInfo.heroTitle, heroDesc: localHotelInfo.heroDesc });
+                                showNotification('Exterior title and description saved.');
+                              }}
+                              className="w-full min-h-[34px] py-1 px-2.5 text-[11px] font-semibold text-white bg-[#1b3a66] hover:bg-[#254d85] rounded transition-colors"
+                            >
+                              Save Public Labels
+                            </button>
+                          </div>
+                        }
                       />
 
-                      {/* Photo 2: Guest Bedroom (diamond 222) */}
+                      {/* Photo 2: Guest Bedroom */}
                       <PhotoCard
                         title="Guest Room Bedroom"
-                        subtitle="diamond 222 photo"
+                        subtitle="Primary guest room & twin accommodation"
                         badge="Guest Room"
                         currentImage={localHotelInfo.roomImage}
                         onSavePhoto={async (fileData, filename) => {
@@ -859,12 +899,44 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                           }
                           return res;
                         }}
+                        detailsForm={
+                          <div className="space-y-2 text-xs">
+                            <div>
+                              <label className="text-neutral-400 block mb-1">Customer-Facing Title</label>
+                              <input
+                                type="text"
+                                value={localHotelInfo.roomTitle || 'Comfortable Twin Bedroom'}
+                                onChange={(e) => setLocalHotelInfo({ ...localHotelInfo, roomTitle: e.target.value })}
+                                className="w-full min-h-[36px] px-2.5 py-1 bg-black/50 border border-white/10 rounded text-white"
+                              />
+                            </div>
+                            <div>
+                              <label className="text-neutral-400 block mb-1">Public Caption / Description</label>
+                              <textarea
+                                rows={2}
+                                value={localHotelInfo.roomDesc || 'Authentic guest bedroom featuring rich dark wood furnishings, dual beds, and private vanity.'}
+                                onChange={(e) => setLocalHotelInfo({ ...localHotelInfo, roomDesc: e.target.value })}
+                                className="w-full px-2.5 py-1 bg-black/50 border border-white/10 rounded text-white text-[11px]"
+                              />
+                            </div>
+                            <button
+                              type="button"
+                              onClick={async () => {
+                                await updateHotelInfo({ roomTitle: localHotelInfo.roomTitle, roomDesc: localHotelInfo.roomDesc });
+                                showNotification('Guest room public title & description saved.');
+                              }}
+                              className="w-full min-h-[34px] py-1 px-2.5 text-[11px] font-semibold text-white bg-[#1b3a66] hover:bg-[#254d85] rounded transition-colors"
+                            >
+                              Save Public Labels
+                            </button>
+                          </div>
+                        }
                       />
 
-                      {/* Photo 3: Interior & Sitting Lounge (diamond 22) */}
+                      {/* Photo 3: Interior & Sitting Lounge */}
                       <PhotoCard
-                        title="Hotel Interior Hall"
-                        subtitle="diamond 22 photo"
+                        title="Hotel Interior & Lounge"
+                        subtitle="Banquet seating, hall & guest lounge"
                         badge="Interior"
                         currentImage={localHotelInfo.interiorImage}
                         onSavePhoto={async (fileData, filename) => {
@@ -874,12 +946,44 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                           }
                           return res;
                         }}
+                        detailsForm={
+                          <div className="space-y-2 text-xs">
+                            <div>
+                              <label className="text-neutral-400 block mb-1">Customer-Facing Title</label>
+                              <input
+                                type="text"
+                                value={localHotelInfo.interiorTitle || 'Hotel Interior & Lounge'}
+                                onChange={(e) => setLocalHotelInfo({ ...localHotelInfo, interiorTitle: e.target.value })}
+                                className="w-full min-h-[36px] px-2.5 py-1 bg-black/50 border border-white/10 rounded text-white"
+                              />
+                            </div>
+                            <div>
+                              <label className="text-neutral-400 block mb-1">Public Caption / Description</label>
+                              <textarea
+                                rows={2}
+                                value={localHotelInfo.interiorDesc || 'Spacious indoor seating hall arranged for ceremonies, celebrations, and dining.'}
+                                onChange={(e) => setLocalHotelInfo({ ...localHotelInfo, interiorDesc: e.target.value })}
+                                className="w-full px-2.5 py-1 bg-black/50 border border-white/10 rounded text-white text-[11px]"
+                              />
+                            </div>
+                            <button
+                              type="button"
+                              onClick={async () => {
+                                await updateHotelInfo({ interiorTitle: localHotelInfo.interiorTitle, interiorDesc: localHotelInfo.interiorDesc });
+                                showNotification('Interior public title & description saved.');
+                              }}
+                              className="w-full min-h-[34px] py-1 px-2.5 text-[11px] font-semibold text-white bg-[#1b3a66] hover:bg-[#254d85] rounded transition-colors"
+                            >
+                              Save Public Labels
+                            </button>
+                          </div>
+                        }
                       />
 
                       {/* Photo 4: Street Entrance */}
                       <PhotoCard
                         title="Street Entrance Approach"
-                        subtitle="Exterior approach view"
+                        subtitle="Exterior street-level arrival view"
                         badge="Entrance"
                         currentImage={localHotelInfo.aboutImage}
                         onSavePhoto={async (fileData, filename) => {
@@ -889,6 +993,132 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                           }
                           return res;
                         }}
+                        detailsForm={
+                          <div className="space-y-2 text-xs">
+                            <div>
+                              <label className="text-neutral-400 block mb-1">Customer-Facing Title</label>
+                              <input
+                                type="text"
+                                value={localHotelInfo.aboutTitle || 'Main Street Entrance & Approach'}
+                                onChange={(e) => setLocalHotelInfo({ ...localHotelInfo, aboutTitle: e.target.value })}
+                                className="w-full min-h-[36px] px-2.5 py-1 bg-black/50 border border-white/10 rounded text-white"
+                              />
+                            </div>
+                            <div>
+                              <label className="text-neutral-400 block mb-1">Public Caption / Description</label>
+                              <textarea
+                                rows={2}
+                                value={localHotelInfo.aboutDesc || 'Main street entrance facing the town center with direct road accessibility.'}
+                                onChange={(e) => setLocalHotelInfo({ ...localHotelInfo, aboutDesc: e.target.value })}
+                                className="w-full px-2.5 py-1 bg-black/50 border border-white/10 rounded text-white text-[11px]"
+                              />
+                            </div>
+                            <button
+                              type="button"
+                              onClick={async () => {
+                                await updateHotelInfo({ aboutTitle: localHotelInfo.aboutTitle, aboutDesc: localHotelInfo.aboutDesc });
+                                showNotification('Entrance public title & description saved.');
+                              }}
+                              className="w-full min-h-[34px] py-1 px-2.5 text-[11px] font-semibold text-white bg-[#1b3a66] hover:bg-[#254d85] rounded transition-colors"
+                            >
+                              Save Public Labels
+                            </button>
+                          </div>
+                        }
+                      />
+
+                      {/* Photo 5: Event & Meeting Hall */}
+                      <PhotoCard
+                        title="Multi-purpose Event Hall"
+                        subtitle="Weddings, parties and conferences"
+                        badge="Events"
+                        currentImage={localHotelInfo.eventImage}
+                        onSavePhoto={async (fileData, filename) => {
+                          const res = await saveHotelPhoto('eventImage', fileData, filename);
+                          if (res.success) {
+                            setLocalHotelInfo({ ...localHotelInfo, eventImage: res.permanentUrl });
+                          }
+                          return res;
+                        }}
+                        detailsForm={
+                          <div className="space-y-2 text-xs">
+                            <div>
+                              <label className="text-neutral-400 block mb-1">Customer-Facing Title</label>
+                              <input
+                                type="text"
+                                value={localHotelInfo.eventTitle || 'Multi-purpose Event Hall'}
+                                onChange={(e) => setLocalHotelInfo({ ...localHotelInfo, eventTitle: e.target.value })}
+                                className="w-full min-h-[36px] px-2.5 py-1 bg-black/50 border border-white/10 rounded text-white"
+                              />
+                            </div>
+                            <div>
+                              <label className="text-neutral-400 block mb-1">Public Caption / Description</label>
+                              <textarea
+                                rows={2}
+                                value={localHotelInfo.eventDesc || 'Expansive gathering hall suitable for weddings, party celebrations, and community assemblies.'}
+                                onChange={(e) => setLocalHotelInfo({ ...localHotelInfo, eventDesc: e.target.value })}
+                                className="w-full px-2.5 py-1 bg-black/50 border border-white/10 rounded text-white text-[11px]"
+                              />
+                            </div>
+                            <button
+                              type="button"
+                              onClick={async () => {
+                                await updateHotelInfo({ eventTitle: localHotelInfo.eventTitle, eventDesc: localHotelInfo.eventDesc });
+                                showNotification('Event hall public title & description saved.');
+                              }}
+                              className="w-full min-h-[34px] py-1 px-2.5 text-[11px] font-semibold text-white bg-[#1b3a66] hover:bg-[#254d85] rounded transition-colors"
+                            >
+                              Save Public Labels
+                            </button>
+                          </div>
+                        }
+                      />
+
+                      {/* Photo 6: Reception & Lobby Area */}
+                      <PhotoCard
+                        title="Lobby & Front Desk"
+                        subtitle="Guest arrival & hospitality counter"
+                        badge="Reception"
+                        currentImage={localHotelInfo.receptionImage}
+                        onSavePhoto={async (fileData, filename) => {
+                          const res = await saveHotelPhoto('receptionImage', fileData, filename);
+                          if (res.success) {
+                            setLocalHotelInfo({ ...localHotelInfo, receptionImage: res.permanentUrl });
+                          }
+                          return res;
+                        }}
+                        detailsForm={
+                          <div className="space-y-2 text-xs">
+                            <div>
+                              <label className="text-neutral-400 block mb-1">Customer-Facing Title</label>
+                              <input
+                                type="text"
+                                value={localHotelInfo.receptionTitle || 'Lobby & Reception Desk'}
+                                onChange={(e) => setLocalHotelInfo({ ...localHotelInfo, receptionTitle: e.target.value })}
+                                className="w-full min-h-[36px] px-2.5 py-1 bg-black/50 border border-white/10 rounded text-white"
+                              />
+                            </div>
+                            <div>
+                              <label className="text-neutral-400 block mb-1">Public Caption / Description</label>
+                              <textarea
+                                rows={2}
+                                value={localHotelInfo.receptionDesc || 'Warm front desk and hospitality counter for seamless check-in and local travel guidance.'}
+                                onChange={(e) => setLocalHotelInfo({ ...localHotelInfo, receptionDesc: e.target.value })}
+                                className="w-full px-2.5 py-1 bg-black/50 border border-white/10 rounded text-white text-[11px]"
+                              />
+                            </div>
+                            <button
+                              type="button"
+                              onClick={async () => {
+                                await updateHotelInfo({ receptionTitle: localHotelInfo.receptionTitle, receptionDesc: localHotelInfo.receptionDesc });
+                                showNotification('Reception public title & description saved.');
+                              }}
+                              className="w-full min-h-[34px] py-1 px-2.5 text-[11px] font-semibold text-white bg-[#1b3a66] hover:bg-[#254d85] rounded transition-colors"
+                            >
+                              Save Public Labels
+                            </button>
+                          </div>
+                        }
                       />
                     </div>
                   </div>
@@ -918,7 +1148,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
                             nameNe: '',
                             category: 'Lunch',
                             priceNpr: 250,
-                            image: '/assets/food/nepali_thali.jpg',
+                            image: './assets/food/nepali_thali.jpg',
                             descriptionEn: '',
                             descriptionNe: '',
                             isAvailable: true,

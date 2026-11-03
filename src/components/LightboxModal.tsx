@@ -42,18 +42,18 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
       {
         id: 'bedroom-twin',
         src: siteData.hotelInfo.roomImage,
-        title: 'Hotel Diamond Twin Bed Guest Room (diamond 222)',
+        title: siteData.hotelInfo.roomTitle || 'Hotel Diamond Twin Bed Guest Room',
         category: 'Rooms',
         caption: 'Guest Twin Bedroom with Warm Linens and Wooden Headboard',
-        description: 'Authentic guest bedroom featuring rich dark wood furnishings, dual beds, and private vanity.',
+        description: siteData.hotelInfo.roomDesc || 'Authentic guest bedroom featuring rich dark wood furnishings, dual beds, and private vanity.',
       },
       {
         id: 'interior-hall',
         src: siteData.hotelInfo.interiorImage,
-        title: 'Hotel Diamond Interior & Banquet Seating (diamond 22)',
+        title: siteData.hotelInfo.interiorTitle || 'Hotel Diamond Interior & Banquet Seating',
         category: 'Interior',
         caption: 'Interior Gathering Space & Stage Hall',
-        description: 'Spacious indoor seating hall arranged for ceremonies, celebrations, and dining.',
+        description: siteData.hotelInfo.interiorDesc || 'Spacious indoor seating hall arranged for ceremonies, celebrations, and dining.',
       },
       {
         id: 'banquet-hall',

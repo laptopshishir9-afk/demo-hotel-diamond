@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Diamond - Sandhikharka, Nepal</title>
+    <script>
+      // Single Page App redirect for GitHub Pages:
+      // Redirects 404s back to root index while preserving hash and query
+      (function() {
+        var segmentCount = 1;
+        var loc = window.location;
+        // Check if repository subpath or root
+        var pathArray = loc.pathname.split('/').filter(Boolean);
+        var repoBase = pathArray.length > 0 ? '/' + pathArray[0] + '/' : '/';
+        
+        // If not already at repoBase index, redirect to base with hash
+        var targetUrl = loc.protocol + '//' + loc.host + repoBase + '#' + loc.pathname + loc.search;
+        window.location.replace(targetUrl);
+      })();
+    </script>
+  </head>
+  <body style="background: #08101d; color: #e5e9f0; font-family: system-ui, -apple-system, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; text-align: center;">
+    <div style="max-width: 400px; padding: 24px; border-radius: 12px; background: #0c1a2f; border: 1px solid #1b3a66;">
+      <h2 style="color: #c5a880; font-size: 1.3rem; margin-bottom: 0.5rem;">Hotel Diamond</h2>
+      <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 1rem;">Redirecting to Sandhikharka, Nepal...</p>
+    </div>
+  </body>
+</html>
